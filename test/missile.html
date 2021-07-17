@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Missile Movement</title>
+  <style>
+    .game-board {
+      width: 400px;
+      height: 400px;
+      margin: 50px auto;
+      background-color: rgb(109, 131, 131);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .square {
+      width: 50px;
+      height: 50px;
+      background-color: rgb(47, 187, 117);
+      position: absolute;
+      bottom: 0;
+      left: 175px;
+    }
+
+    .circle {
+      width: 20px;
+      height: 20px;
+      background-color: rgb(16, 36, 148);
+      border-radius: 20px;
+      position: absolute;
+      bottom: 0;
+    }
+
+    .invader-block {
+      width: 200px;
+      height: 140px;
+      border: 1px solid red;
+      position: absolute;
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    .aliensquare {
+      width: 20px;
+      height: 20px;
+      position: absolute;
+      border: 1px solid blue;
+    }
+    .content {
+      width: 400px;
+      margin: 20px auto;
+      display: flex;
+      flex-direction: column;
+      flex-wrap: nowrap;
+      justify-content: center;
+      align-items: center;
+
+    }
+  </style>
+</head>
+<body>
+  <div class="game-board">
+    <div class="invader-block"></div>
+    <div class="square"></div>
+  </div>
+  <div class="content">
+  <button>Start</button>
+    </div>
+<script>
+  const gameArea = document.querySelector('.game-board')
+  const square = document.querySelector('.square')
+  let boundary = 175
+  let width = 50
+  const invaderBlock = document.querySelector('.invader-block')
+
+    
+  class Gun {
+  constructor() {
+        
+      
+    }
+
+  init() {
+   document.addEventListener('keydown', (e) => {
+   switch(e.key) {
+   case 'ArrowLeft':
+   if (boundary + width !== 50)
+    boundary -=5
+    square.style.left = boundary + 'px'
+    this.missilePos = square.style.left
+    break
+
+   case 'ArrowRight':
+     if (boundary + width !== 400)
+      boundary +=5
+      square.style.left = boundary + 'px'
+      this.missilePos = square.style.left
+     break
+    
+     case 'ArrowUp':
+    
+         this.shootCircle()
+      
+      
+    break
+    
+    }
+    
+  })
+  
+}
+
+  shootCircle() {
+  
+  //this.squareArea = square.offsetLeft
+  //this.y = this.squareArea
+  this.circle = document.createElement('div')
+  this.circle.classList.add('circle')
+   gameArea.appendChild(this.circle)
+    
+      this.circle.style.left = this.missilePos
+      console.log(this.missilePos)
+
+      let circlePos = 400
+  
+     setInterval( () => {
+      
+      if(circlePos == -50) {
+      this.circle.remove()
+      clearInterval();
+    } else {
+     
+    circlePos-= 5
+      this.circle.style.top = circlePos + 'px'
+  
+  }
+     }, 10)
+    
+    }
+}
+  
+
+class Invaders {
+  constructor(){
+    this.invaderBlock = invaderBlock
+    this.goingRight = true
+  }
+  init() {
+    
+    
+  }
+
+  startGame(){
+
+    this.blockArea = invaderBlock.offsetLeft
+    this.blockTop = invaderBlock.offsetTop
+   
+    if(this.blockArea < 5 || this.goingRight == true ) {
+      this.moveblockRight()
+  }
+  if(this.goingRight == false ) {
+      this.moveblockLeft()
+  }
+  }
+
+  moveblockRight() {
+    let blockPos = 0
+    this.moveBlock = setInterval(() => {
+   if (blockPos == 200) {
+     this.moveblockDown()
+     
+      clearInterval(this.moveBlock)
+      this.goingRight = false
+    } else {
+      this.invaderBlock.style.left = blockPos++ + 'px'
+      }
+      }, 50);
+  }
+
+  moveblockLeft() {
+    let blockPos =200
+    this.moveBlock = setInterval(() => {
+   if (blockPos == 0) {
+     this.moveblockDown()
+     this.goingRight = true
+      clearInterval(this.moveBlock)
+      
+    } else {
+      this.invaderBlock.style.left = blockPos-- + 'px'
+      }
+      }, 50);
+  }
+
+  moveblockDown(){
+    let downPos = this.blockTop
+    this.blockDown = setTimeout(() => {
+    if (downPos == 300) {
+      clearTimeout(this.blockDown)
+    }else{
+  this.invaderBlock.style.top = downPos + 20 + 'px'
+  console.log(downPos)
+  this.startGame()
+  
+    }
+    }, 300)
+  
+}
+}
+
+
+const gun = new Gun();
+gun.init();
+
+const aliens = new Invaders();
+aliens.init();
+
+const button = document.querySelector('button');
+button.addEventListener('click', () => {
+ aliens.startGame();
+});
+  
+  </script>
+</body>
+</html>

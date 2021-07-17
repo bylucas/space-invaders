@@ -1,0 +1,116 @@
+.game-board {
+  max-width: 300px;
+  margin: 0 auto 20px auto;
+  height: 300px;
+  position: relative;
+  background-image: url(images/background.jpg);
+  background-repeat: no-repeat;
+  background-position: center center;
+  overflow: hidden;
+  background-size: contain;
+}
+
+.gun {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-items: center;
+  width: 40px;
+  height: 20px;
+  background-color: red;
+  position: absolute;
+  bottom: 0;
+  left: 130px;
+}
+
+.barrel {
+  position: relative;
+  width: 20px;
+  height: 20px;
+  background: rgb(30, 255, 0);
+  margin-top: -10px;
+  z-index: 20;
+}
+
+.missile {
+  box-sizing: border-box;
+  width: 10px;
+  height: 15px;
+  position: absolute;
+  bottom: 0;
+  background-color: crimson;
+
+}
+
+.alien-block {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: flex-start;
+  align-content: flex-start;
+  position: absolute;
+  width: 200px;
+}
+
+.alien-block div {
+  width: 21px;
+  height: 21px;
+}
+
+/* color reference only */
+.alien-background {
+  color: rgb(34, 36, 34);
+  color: rgb(81, 83, 81);
+}
+
+.content {
+  width: 400px;
+  margin: 10px auto;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+}
+
+h1 {
+  font-size: 2rem;
+  color: royalblue;
+}
+
+h4 {
+  font-size: 1.6rem;
+  color: rgb(65, 56, 87);
+  margin: 20px 0;
+}
+
+button {
+  padding: 8px 30px;
+  color: whitesmoke;
+  background: blue;
+  border-radius: 5px;
+  cursor: pointer;
+  outline: none;
+  border: none;
+}
+
+button:hover {
+  background: rgb(72, 127, 172);
+}
+
+.invader {
+  background-image: url(images/invader-down.png);
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+.shot {
+  background: transparent !important;
+}
+
+.boom {
+  background: url(images/invader-boom.png) !important;
+  background-repeat: no-repeat;
+  background-position: center center;
+}

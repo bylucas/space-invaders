@@ -1,0 +1,40 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<title>positions</title>
+<style>
+	.game-area {
+		position: relative;
+	background: #ddd;
+	height: 400px;
+	overflow: hidden;
+	}
+.gun {
+	position: absolute;
+	border: 1px solid red;
+	width: 100px;
+	height: 50px;
+	top: 308px;
+	left: 50%;
+}
+
+.missile {
+	position: absolute;
+	border: 2px solid blue;
+	width: 50px;
+	height: 60px;
+	/*top: 308px;
+	left: 50%;*/
+}
+</style>
+</head>
+
+<body>
+	<div class="game-area">
+	<div class="missile">Attach Me</div>
+	<div class="gun">Find me</div>
+	</div>
+	<script src="app2.js"></script>
+</body>
+</html>

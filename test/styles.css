@@ -1,0 +1,58 @@
+body {
+	margin: 0;
+	padding: 50px;
+	text-align: center;
+}
+
+.game-board {
+	position: relative;
+	background: #ddd;
+	height: 80vh;
+	overflow: hidden;
+	max-width: 1000px;
+	margin: 0 auto;
+}
+
+.gun {
+	display: flex;
+flex-direction: column;
+flex-wrap: nowrap;
+align-items: center;
+	width:60px;
+	height:30px;
+	background-color: blue;
+	position: absolute;
+	bottom: 0;
+	left:50%;
+}
+
+.barrel {
+	position: relative;
+	width: 20px;
+	height:30px;
+	background: red;
+	margin-top: -20px;
+}
+
+h1 {
+	font-size: 2rem;
+	color: red;
+}
+
+.missile {
+	position: absolute;
+	width: 6px;
+	height: 12px;
+	background: blue;
+	bottom: 5px;
+	/*left: 7px;*/
+	/*top: 0;*/
+}
+
+.alienship {
+	position: absolute;
+	width: 20px;
+	height: 20px;
+	background: red;
+	right: 0;
+}

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aliens</title>
+  <style>
+    .game-board {
+      width: 400px;
+      height: 400px;
+      margin: 50px auto;
+      background-color: rgb(109, 131, 131);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .alien-block {
+      display: flex;
+flex-direction: row;
+flex-wrap: wrap;
+justify-content: flex-start;
+align-items: flex-start;
+align-content: flex-start;
+position: absolute;
+width: 200px;
+    }
+
+    .alien-block div {
+      width: 20px;
+      height: 20px;
+      border: 1px solid blue;
+      background:rgb(48, 31, 196);
+    }
+
+    .on {
+      background:rgb(194, 103, 61) !important;
+    }
+
+    button {
+      display: block;
+      padding: 3px 5px;
+      color: rgb(48, 31, 196);
+      width: 60px;
+      margin: 30px auto;
+    }
+  </style>
+</head>
+<body>
+  <div class="game-board">
+
+    <div class="alien-block">
+      
+    </div>
+
+  </div>
+  <button>Start</button>
+
+  <script>
+    const gameArea = document.querySelector('.game-board')
+
+    const Block = document.querySelector('.alien-block')
+
+    const Button = document.querySelector('button')
+
+    for (let i = 0; i < 36; i++) {
+  const square = document.createElement('div')
+  Block.appendChild(square)
+}
+
+const squares = Array.from(document.querySelectorAll('.alien-block div'))
+
+const alienInvaders = [
+  0,1,2,3,4,5,6,7,8,
+  9,10,11,12,13,14,15,16,17,
+  18,19,20,21,22,23,24,25,26,
+  27,28,29,30,31,32,33,34,35
+]
+
+class Invaders{
+  constructor(move, down) {
+    this.block = Block
+    this.move = move
+    this.down = down
+  }
+
+  init() {
+    
+  }
+
+
+  start() {
+  console.log(typeof this.move)
+  
+  for (let i = 0; i < alienInvaders.length; i++) {
+    setInterval(() => {
+      squares[alienInvaders[i]].classList.add('on') 
+      this.block.style.left = 20 + 'px'
+    console.log(this.block)
+    console.log(typeof this.move)
+    }, 30)
+  }
+  clearInterval()
+  for (let i = 0; i < alienInvaders.length; i++) {
+    setInterval(() => {
+    squares[alienInvaders[i]].classList.remove('on') 
+      this.block.style.left = 40 + 'px'
+    console.log(this.block)
+    console.log(typeof this.move)
+    }, 40)
+    clearInterval()
+  }
+}
+}
+
+const aliens = new Invaders()
+
+Button.addEventListener('click', () => {
+ aliens.start()
+})
+</script>
+</body>
+</html>
